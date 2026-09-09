@@ -2,13 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useState, type CSSProperties } from "react";
 import { products as allProducts } from "@/data/products";
 
 type Product = typeof allProducts[0];
 const categories = ["Laptops", "Smartphones", "Tablettes", "Accessoires"];
 const brands = ["Apple", "Samsung", "HP", "Dell"];
-const Icon = ({ children, className = "" }: { children: string; className?: string }) => <span aria-hidden="true" className={`material-symbols-outlined ${className}`}>{children}</span>;
+const Icon = ({ children, className = "", style }: { children: string; className?: string; style?: CSSProperties }) => <span aria-hidden="true" className={`material-symbols-outlined ${className}`} style={style}>{children}</span>;
 const price = (value: number) => `${new Intl.NumberFormat("fr-FR").format(value)} FCFA`;
 
 export function Boutique() {

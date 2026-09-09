@@ -2,11 +2,19 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import type { Product } from "@/data/products";
 
-const Icon = ({ children, className = "" }: { children: string; className?: string }) => (
-  <span aria-hidden="true" className={`material-symbols-outlined ${className}`}>
+const Icon = ({
+  children,
+  className = "",
+  style,
+}: {
+  children: string;
+  className?: string;
+  style?: CSSProperties;
+}) => (
+  <span aria-hidden="true" className={`material-symbols-outlined ${className}`} style={style}>
     {children}
   </span>
 );

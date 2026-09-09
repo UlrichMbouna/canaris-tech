@@ -1,7 +1,16 @@
+import type { CSSProperties } from "react";
 import Link from "next/link";
 
-const Icon = ({ children, className = "" }: { children: string; className?: string }) => (
-  <span aria-hidden="true" className={`material-symbols-outlined ${className}`}>
+const Icon = ({
+  children,
+  className = "",
+  style,
+}: {
+  children: string;
+  className?: string;
+  style?: CSSProperties;
+}) => (
+  <span aria-hidden="true" className={`material-symbols-outlined ${className}`} style={style}>
     {children}
   </span>
 );
@@ -92,7 +101,7 @@ export default function ContactPage() {
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkAC_uFjDFmd1bl6TniNZtL92XjIs-5OF6k0_cjmqhD0uhemYdEpNspHVZvpOiPA8g7UsQHpSdiuUf44-XrB2w-khPVCN_lJIefpqyCrHhUabMhP_Brn8aWtrklze5Qd3sln3ETpniFQ30oWDl1MiqBqkUbduF8a_0YyavgjKjcG6LztC4i5hwoMcZs11dLhTyY7hlpQrLoilOt2pIgHyTUxH3B6Pvst9ALbCL3Ctggw9CjUvUKoMdpA"
             />
             <div className="z-10 bg-surface/90 backdrop-blur-sm px-4 py-2 rounded-lg font-label-sm text-label-sm text-on-surface shadow-sm border border-outline-variant/20 flex items-center gap-2">
-              <Icon className="text-primary-container" style={{ fontVariationSettings: "'FILL' 1" }}>
+              <Icon className="text-primary-container" style={{ fontVariationSettings: '"FILL" 1' } as React.CSSProperties}>
                 location_on
               </Icon>
               Carte (Emplacement)
@@ -148,10 +157,11 @@ export default function ContactPage() {
                 </label>
                 <div className="relative">
                   <select
-                    className="w-full bg-surface-container border border-outline-variant/30 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg p-3 font-body-md text-body-md text-on-surface outline-none transition-all appearance-none"
-                    id="subject"
+                      className="w-full bg-surface-container border border-outline-variant/30 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg p-3 font-body-md text-body-md text-on-surface outline-none transition-all appearance-none"
+                      id="subject"
+                      defaultValue=""
                   >
-                    <option disabled selected value="">
+                    <option disabled value="">
                       Sélectionnez un sujet
                     </option>
                     <option value="sales">Ventes & Devis</option>

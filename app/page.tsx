@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { getProductsHome } from "@/data/products";
@@ -7,7 +8,7 @@ export const metadata: Metadata = { title: "High-tech premium au Cameroun", desc
 
 const categories = [["smartphone", "Smartphones"], ["laptop_mac", "Ordinateurs"], ["tablet_mac", "Tablettes"], ["headphones", "Écouteurs"], ["watch", "Montres"], ["cable", "Accessoires"], ["tv", "Téléviseurs"], ["sports_esports", "Gaming"]] as const;
 const products = getProductsHome();
-const Icon = ({ children, className = "" }: { children: string; className?: string }) => <span aria-hidden="true" className={`material-symbols-outlined ${className}`}>{children}</span>;
+const Icon = ({ children, className = "", style }: { children: string; className?: string; style?: CSSProperties }) => <span aria-hidden="true" className={`material-symbols-outlined ${className}`} style={style}>{children}</span>;
 
 export default function Home() { return <>
   <section className="relative flex min-h-[580px] items-center overflow-hidden bg-surface-container-low"><div className="absolute inset-0 bg-[url('https://lh3.googleusercontent.com/aida-public/AB6AXuDYLc1fZSSFVJhtFdi0FxgXGQ4MBSC62FqvHaksRn4Ig6Q4OfVVZOa5DbzDhwAtSLeq261BInBcvVxu7O5BLK979-kEkF-cxyPiUZK9OhwIA8gdkRdLYIkXEvDTgg0WIj6VDf1RcgIrCuuSVjU7PTGD66ls3nmu1nDUT63zIw4ZBN2oZKcRnMwrUvnXk6OyugJ73ATv-7AZo2uPFkWphKe7FOcACoN1hLQqfPoTEgxqcPfutHnCs0ePcA')] bg-cover bg-center opacity-20" /><div className="relative mx-auto w-full max-w-container px-5 py-20 lg:px-16"><div className="max-w-2xl"><p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">CanarisTech</p><h1 className="text-4xl font-bold tracking-tight text-on-surface sm:text-5xl sm:leading-tight">La technologie qui vous accompagne au quotidien.</h1><p className="mt-5 text-lg leading-8 text-on-surface-variant">Votre spécialiste high-tech premium.</p><div className="mt-8 flex flex-wrap gap-3"><Link href="/boutique" className="rounded-lg bg-primary-container px-6 py-3 font-semibold text-on-primary hover:bg-primary">Découvrir la boutique</Link><Link href="/contact" className="rounded-lg bg-[#25D366] px-6 py-3 font-semibold text-white hover:bg-[#1DA851]">Commander sur WhatsApp</Link></div></div></div></section>
