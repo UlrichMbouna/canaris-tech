@@ -1,69 +1,19 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
-}
+export const metadata: Metadata = { title: "High-tech premium au Cameroun", description: "Découvrez les smartphones, ordinateurs et accessoires sélectionnés par CanarisTech." };
+
+const categories = [["smartphone", "Smartphones"], ["laptop_mac", "Ordinateurs"], ["tablet_mac", "Tablettes"], ["headphones", "Écouteurs"], ["watch", "Montres"], ["cable", "Accessoires"], ["tv", "Téléviseurs"], ["sports_esports", "Gaming"]] as const;
+const products = [
+  { name: "iPhone 15 Pro", price: "750 000 FCFA", rating: "4.8", promo: true, image: "https://lh3.googleusercontent.com/aida-public/AB6AXuABsJARh_uEFu5GF04uRpW7JTb_D28hwRFyKcm9ezmwCpQhk3ZH-MGKAOb93X-1qwKzrFfCCxfBIiH9q8NrPFgBPtaUdROiVLvDqq-u0K1lTHm48Zj7cAso7bo2yKGomacjRIiK0ZLD0vGBEZe0ifhIAtaZVHFcWwHk8lrrHalJDRUn3ISFPIsrYEY7Kd5tGWL9JEg42L4z_w3K8s-WHE0n5T4WcAX8rXrv0UVjPtbnaT5LRDc2wVybkg" },
+  { name: "MacBook Pro 16\"", price: "1 500 000 FCFA", rating: "4.9", promo: false, image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDJDkAyuEU0kfBBXf0uKgppeyK3a9GPdVEkWk7QeQQ5NLDsm7ozdNRa0SvVz_W_wlcR85lhxcTYmxG5MYhSYG3WXLj1MoXdI_WDZWy4TSrJ_lI7jPpsglA9bzb_JWGX1lMxWJWpLGdk-3v7WAFWs-Jo5gD_J3b7PDz5hksYtJJUhkunS6Mg5AsTl_BjHjo6Yhor-hwHzk1hubq9VmNGNyB6JQ3lBapNFXs5E-OndFxLVB9uIqOoLKC7BA" },
+];
+const Icon = ({ children, className = "" }: { children: string; className?: string }) => <span aria-hidden="true" className={`material-symbols-outlined ${className}`}>{children}</span>;
+
+export default function Home() { return <>
+  <section className="relative flex min-h-[580px] items-center overflow-hidden bg-surface-container-low"><div className="absolute inset-0 bg-[url('https://lh3.googleusercontent.com/aida-public/AB6AXuDYLc1fZSSFVJhtFdi0FxgXGQ4MBSC62FqvHaksRn4Ig6Q4OfVVZOa5DbzDhwAtSLeq261BInBcvVxu7O5BLK979-kEkF-cxyPiUZK9OhwIA8gdkRdLYIkXEvDTgg0WIj6VDf1RcgIrCuuSVjU7PTGD66ls3nmu1nDUT63zIw4ZBN2oZKcRnMwrUvnXk6OyugJ73ATv-7AZo2uPFkWphKe7FOcACoN1hLQqfPoTEgxqcPfutHnCs0ePcA')] bg-cover bg-center opacity-20" /><div className="relative mx-auto w-full max-w-container px-5 py-20 lg:px-16"><div className="max-w-2xl"><p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary">CanarisTech</p><h1 className="text-4xl font-bold tracking-tight text-on-surface sm:text-5xl sm:leading-tight">La technologie qui vous accompagne au quotidien.</h1><p className="mt-5 text-lg leading-8 text-on-surface-variant">Votre spécialiste high-tech premium.</p><div className="mt-8 flex flex-wrap gap-3"><Link href="/boutique" className="rounded-lg bg-primary-container px-6 py-3 font-semibold text-on-primary hover:bg-primary">Découvrir la boutique</Link><Link href="/contact" className="rounded-lg bg-[#25D366] px-6 py-3 font-semibold text-white hover:bg-[#1DA851]">Commander sur WhatsApp</Link></div></div></div></section>
+  <section className="mx-auto max-w-container px-5 py-14 lg:px-16"><h2 className="text-2xl font-semibold tracking-tight">Catégories populaires</h2><div className="mt-7 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-8">{categories.map(([icon, name]) => <Link href="/categories" key={name} className="flex min-h-32 flex-col items-center justify-center rounded-lg border border-outline-variant/40 bg-surface-container-lowest p-4 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"><Icon className="mb-2 text-4xl text-primary">{icon}</Icon><span className="text-sm font-semibold">{name}</span></Link>)}</div></section>
+  <section className="mx-auto max-w-container px-5 pb-14 lg:px-16"><div className="flex items-baseline justify-between gap-4"><h2 className="text-2xl font-semibold tracking-tight">Produits populaires</h2><Link href="/boutique" className="text-sm font-semibold text-primary hover:underline">Voir la boutique</Link></div><div className="mt-7 grid gap-6 md:grid-cols-2 lg:grid-cols-4">{products.map((product) => <article key={product.name} className="overflow-hidden rounded-lg border border-outline-variant/40 bg-surface-container-lowest shadow-sm transition hover:shadow-md"><div className="relative flex h-64 items-center justify-center bg-[#f5f7fa] p-5"><Image className="max-h-full w-auto object-contain" src={product.image} alt={`Photo du ${product.name}`} width={360} height={256} />{product.promo && <span className="absolute right-4 top-4 rounded-full bg-error px-3 py-1 text-xs font-bold text-on-error">Promo</span>}</div><div className="p-5"><h3 className="text-lg font-semibold">{product.name}</h3><p className="mt-2 flex items-center gap-1 text-sm text-on-surface-variant"><Icon className="text-base text-amber-500">star</Icon>{product.rating}</p><p className="mt-3 text-xl font-semibold text-primary">{product.price}</p><Link href="/contact" className="mt-5 flex justify-center rounded-lg bg-[#25D366] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#1DA851]">Commander sur WhatsApp</Link></div></article>)}</div></section>
+  <section className="mx-auto max-w-container px-5 pb-16 lg:px-16"><div className="flex flex-col items-center justify-between gap-6 rounded-xl border border-primary/20 bg-inverse-surface p-8 text-center sm:p-10 md:flex-row md:text-left"><div><h2 className="text-3xl font-bold tracking-tight text-surface-bright">Les meilleures offres tech du moment</h2><p className="mt-3 text-surface-variant/80">Découvrez nos réductions exclusives.</p></div><Link href="/promotions" className="shrink-0 rounded-lg bg-primary-container px-6 py-3 font-semibold text-on-primary hover:bg-primary">Voir les promotions</Link></div></section>
+</>; }
